@@ -1,0 +1,17 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+
+{% if exists == 0 %}
+    <h1> Error: Requested Page Not Found </h1>
+{% elif exists == 2%}
+    <h1> Error: Page Already Exists </h1>
+{% else %}
+    {{data | safe}}
+    <a href = "{% url 'edit' entry_title=title %}"> Edit </a>
+{% endif %}
+{% endblock %}
